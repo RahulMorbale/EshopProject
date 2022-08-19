@@ -1,0 +1,22 @@
+.navbar {
+    // max-width: 100%;
+    .textwhite {
+        color: white;
+    }
+
+    .leftspace {
+        margin-left: 20px;
+    }
+    .loginbtn {
+        --bs-btn-padding-y: 0.25rem;
+        --bs-btn-padding-x: 2.5rem;
+        --bs-btn-font-size: 0.75rem;
+        height: fit-content;
+        margin-top: 5px
+    }
+    .searchInput {
+        margin-left: 138px;
+        height: 31px;
+        max-width: 47%;
+    }
+}
