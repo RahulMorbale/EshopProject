@@ -1,18 +1,17 @@
 <section style="text-align-last: center;">
     <div class="shadow p-4 mb-5 bg-body rounded row" style="white-space: nowrap;place-content: center;">
-        <div class="underline d-flex justify-content-between">
-            <!-- using array -->
-            <!-- <div class="underline d-flex justify-content-between col-sm-1" *ngFor="let item of categoryArray">
-            
-             <div class="mx-5 row">
-                <a (click)="filterproduct(item.title)">
+        <div class="underline d-flex justify-content-between" style="margin-right: 76px;">
+            <!-- *using array 
+        <div class="underline d-flex justify-content-between col-sm-1" *ngFor="let item of categoryArray">
+            <div class="mx-5 row">
+                <a (click)="filterproduct(item.category)">
                     <img src={{item.image}} alt="Top Offers" width="65" height="65">
-                    <a href="" class="d-block">{{item.title}}</a>
+                    <a href="#" class="d-block">{{item.title}}</a>
                 </a>
-            </div> -->
-            <!-- using array -->
-
-            <div class="mx-5 ">
+            </div>          
+            *using array -->
+            <!--* using hardcoded -->
+            <!-- <div class="mx-5 ">
                 <a (click)="filterproduct('All')">
                     <img src="/assets/Images/Top_Offers.png" alt="Top Offers" width="65" height="65">
                     <a href="#" class="d-block">Top Offers</a>
@@ -53,12 +52,22 @@
             <div class="mx-5 ">
                 <img src="/assets/Images/Travel.png" alt="Top Offers" width="65" height="65">
                 <a href="#" class="d-block">Travel</a>
+            </div> -->
+            <!--* using hardcoded -->
+
+            <div class="underline d-flex justify-content-between col-sm-1"  *ngFor="let item of categoryArray">
+                <div class="mx-5 row">
+                    <a (click)="filterproduct(item.category)">
+                        <img src={{item.image}} alt="Top Offers" width="65" height="65">
+                        <a href="#" class="d-block">{{item.title}}</a>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 <section style="margin-top:-22px">
-    <div>
+    <div class="container-xxl">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -77,7 +86,7 @@
                     <img src="/assets/Images/carousel/carousel5.jpeg" class="d-block w-100" alt="carousel5">
                 </div>
             </div>
-            <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls"
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -91,22 +100,22 @@
     </div>
 </section>
 
-<section class=" mt-5 container-fluid" >
+<section class=" mt-5 container-fluid">
     <div class="row" style="width: 100%;">
         <div class=" col-sm-6 col-md-5 col-lg-3 mb-3" *ngFor="let item of filteredProducts">
             <a href="#" style="text-decoration: none; color:black">
-            <div class="flex container " style="width: 17rem;">
-                <div>
-                    <img src={{item.image}} class="card-img-top" style="height: 200px;">
+                <div class="flex container" style="width: 17rem;">
+                    <div>
+                        <img src={{item.image}} class="card-img-top" style="height: 200px;">
+                    </div>
+                    <div class="card-body" style="height: 100%;">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.description}}</p>
+                        <p class="card-text">{{item.price|currency:'INR'}}</p>
+                        <a href="#" class="btn btn-primary " >Add to cart</a>
+                    </div>
                 </div>
-                <div class="card-body" style="height: 100%;">
-                    <h5 class="card-title">{{item.title}}</h5>
-                    <p class="card-text">{{item.description}}</p>
-                    <p class="card-text">${{item.price}}</p>
-                    <!-- <a href="#" class="btn btn-primary " >Add to cart</a> -->
-                </div>
-            </div>
-        </a>
+            </a>
         </div>
     </div>
 </section>

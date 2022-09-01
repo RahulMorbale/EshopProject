@@ -1,0 +1,34 @@
+<div class="card container">
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" formControlName="email" class="form-control is-valid" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+            <div class="alert alert-danger" *ngIf="email?.errors?.['required'] && (email?.touched||email?.dirty)">
+                Email is required
+            </div>
+            <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
+                <!--question mark(?) is a safe navigation operator-->
+                <small *ngIf="email?.errors?.['pattern']" class="text-danger">
+                    Please provide a valid email address</small>
+            </div>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control is-valid" id="exampleInputPassword1">
+            
+
+            <div class="alert alert-danger"
+                *ngIf="password?.errors?.['required'] && (password?.touched || password?.dirty)">
+                Password is required
+
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="isFormAccept">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-left: 183px;margin-bottom: 12px;">Submit</button>
+    </form>
+</div>
