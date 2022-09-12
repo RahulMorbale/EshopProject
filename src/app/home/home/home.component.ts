@@ -1,3 +1,4 @@
+import { CartService } from './../../cart/services/cart.service';
 import { product } from './../../core/Models/product';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/core/http/http.service';
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   productsArray: any
   categoryArray: any
   filteredProducts: product[] = []
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService,private cart:CartService) { }
   ngOnInit(): void {
     this.getProductDetails()  // total product list fetch from fake json(productsitems)
     this.getCategory()  // category list(like grocery,fashion) fetch from fake json(categoryArray) 
@@ -43,7 +44,9 @@ export class HomeComponent implements OnInit {
       this.filteredProducts = this.productsArray.filter((el: any) => (el.category == type))
     }
   }
-
+  addToCart(product:product){
+    this.cart.addItemToCart(product)
+  }
 
 
 

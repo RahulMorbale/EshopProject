@@ -13,10 +13,10 @@
             <!-- <button type="button" class="btn  bg-white ms-2 " type="submit"
                 style="--bs-btn-padding-y: 0.25rem;--bs-btn-padding-x: 2.5rem;--bs-btn-font-size: 0.75rem;height: fit-content; margin-top:5px">
                 Login </button> -->
-            <button *ngIf="!isLoggedIn" class="btn  bg-white ms-2 loginbtn" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                type="button" style="font-weight: bolder;color: royalblue;" (click)="signinform()">Login
+            <button *ngIf="!isLoggedIn" class="btn  bg-white ms-2 loginbtn" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" type="button" style="font-weight: bolder;color: royalblue;"
+                (click)="signinform()">Login
             </button>
-            
             <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                     <li class="nav-item dropdown">
@@ -25,25 +25,23 @@
                             {{user.firstName}}&nbsp; {{user.lastName}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">My Profile</a></li>
-                            <li><a class="dropdown-item" (click)="logout()" class="mouse" >Log Out</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/signUp']"
+                                    routerLinkActive="router-link-active">My Profile</a></li>
+                            <li><a class="dropdown-item" (click)="logout()" class="mouse">Log Out</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    
                 </ul>
             </div>
-
-
-
         </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active textwhite leftspace" aria-current="page" href="#">Bacome a Seller</a>
+                    <a class="nav-link active textwhite leftspace" aria-current="page" [routerLink]="['/seller']">Bacome
+                        a Seller</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle textwhite leftspace" href="#" role="button"
@@ -60,19 +58,17 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active textwhite leftspace" aria-current="page" href="#"><i
-                            class="bi bi-cart"></i>&nbsp; Cart</a>
+                    <a class="nav-link active textwhite leftspace" aria-current="page" [routerLink]="['/cart']"><i
+                            class="bi bi-cart"></i>&nbsp; Cart {{(selectedItems |async)?.length}}</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
   </button> -->
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

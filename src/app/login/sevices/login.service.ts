@@ -14,7 +14,7 @@ export class LoginService {
   }
   authLogin(data: any) {
     const params = new HttpParams()
-      .set("email", data.email)
+      .set("emailId", data.email)
       .set("password", data.password)
     return this.http.getdata('users', params)
   }

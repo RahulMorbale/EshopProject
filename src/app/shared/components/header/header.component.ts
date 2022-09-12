@@ -1,5 +1,9 @@
+import { product } from './../../../core/Models/product';
 import { AuthenticationService } from './../../../core/authentication/authentication.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/cart/services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +14,17 @@ export class HeaderComponent implements OnInit {
   actionType = 'SignIn'
   isLoggedIn: boolean = false
   user: any
+  selectedItems: Observable<product[]> | null = null
   @ViewChild('btnclose') closeButton: any
-  constructor(private authsvc: AuthenticationService) { }
+  constructor(private authsvc: AuthenticationService, private route: Router, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getUserDetails()
+    this.selectedItems = this.cart.selectedItems
+    // this.cart.selectedItems.subscribe((res:any)=>{
+    //   this.selectedItems=res.length
+    //   console.log("header cart data: ",res)
+    // })
   }
   handleAction() {       //New user button click then signup page displayed (new user=> btn click method)
     this.actionType = 'SignUp'
@@ -33,17 +43,18 @@ export class HeaderComponent implements OnInit {
       this.getUserDetails()
     }
   }
-
   getUserDetails() {
     let responseObj = this.authsvc.getUser()
     if (responseObj != null)
       this.isLoggedIn = true
     this.user = responseObj
-    //     console.log("user data:=>",this.user)
+    console.log("user data after login:=>", this.user)
   }
-  logout(){
+  logout() {
     localStorage.removeItem('user')
-    this.isLoggedIn=false
+    this.isLoggedIn = false
+    this.route.navigate(['product'])
+    // this.route.navigateByUrl('product')
     // location.reload() // url reload 
   }
 }

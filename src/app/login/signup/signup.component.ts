@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../core/authentication/authentication.service';
 import { HttpService } from './../../core/http/http.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,12 +12,17 @@ import { passwordMisMatch } from 'src/app/shared/Validator/custom.validator';
 })
 export class SignupComponent implements OnInit {
   signUpForm!: FormGroup;
+  user: any
   @Input() actionName: string = ''
   // @Output() signUpCompleted: EventEmitter<boolean> = new EventEmitter()
-  @Output() signUpCompleted= new EventEmitter<boolean>()
-  constructor(private fb: FormBuilder, private loginservice: LoginService, private http: HttpService) { }
+  @Output() signUpCompleted = new EventEmitter<boolean>()
+  constructor(private fb: FormBuilder, private loginservice: LoginService, private http: HttpService, private authservice: AuthenticationService) { }
   ngOnInit(): void {
     this.createFormStructure()
+    this.user = this.authservice.getUser()
+    if (this.user != null){
+      this.signUpForm.patchValue(this.user)
+    }
   }
   createFormStructure() {
     this.signUpForm = this.fb.group({
@@ -35,7 +41,7 @@ export class SignupComponent implements OnInit {
         "state": ['', []],
         "zipCode": ['', []],
       })
-    },{validators:passwordMisMatch})
+    }, { validators: passwordMisMatch })
   }
 
   onFormSubmit() {

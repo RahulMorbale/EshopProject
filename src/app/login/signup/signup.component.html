@@ -1,10 +1,10 @@
-<div class="card container">
+<div
+    [ngClass]="actionName !='SignUp'? 'card bg-secondary bg-gradient  text-white container mt-2 w-50 ' :'card container'">
     <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()" class="row g-3 needs-validation " novalidate>
         <div>
             <label for="firstName" class="form-label">First name</label>
             <input type="text" class="form-control is-valid" name="firstName" id="firstName"
                 formControlName="firstName">
-
             <!-- <div class="alert alert-danger "
                 *ngIf="signUpForm.controls['firstName'].errors?.['required'] && (signUpForm.controls['firstName'].touched || signUpForm.controls['firstName'].dirty)">
                 First Name is mandatory
@@ -106,8 +106,8 @@
             <label for="password" class="form-label">Password </label>
             <input type="password" class="form-control is-valid" name="password" id="password"
                 formControlName="password">
-              
-                <!-- <div *ngIf="signUpForm.errors?.['passNotMatch'] && (signUpForm.controls['password'].touched || signUpForm.controls['password'].dirty)" class="invalid-feedback d-block">
+
+            <!-- <div *ngIf="signUpForm.errors?.['passNotMatch'] && (signUpForm.controls['password'].touched || signUpForm.controls['password'].dirty)" class="invalid-feedback d-block">
                     Password and Confirm Password is not same 
                     </div> -->
             <div class="alert alert-danger "
@@ -134,10 +134,10 @@
             <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="password" class="form-control is-valid" name="confirmPassword" id="confirmPassword"
                 formControlName="confirmPassword">
-                <!-- <div *ngIf="signUpForm.errors?.['passNotMatch'] && (signUpForm.controls['confirmPassword'].touched || signUpForm.controls['confirmPassword'].dirty)" class="invalid-feedback d-block">
+            <!-- <div *ngIf="signUpForm.errors?.['passNotMatch'] && (signUpForm.controls['confirmPassword'].touched || signUpForm.controls['confirmPassword'].dirty)" class="invalid-feedback d-block">
                     Password and Confirm Password is not same 
                </div> -->
-            
+
             <div class="alert alert-danger "
                 *ngIf="signUpForm.errors?.['passNotMatch'] && (confirmPassword?.touched || confirmPassword?.dirty)">
                 Password and Confirm Password is not same
@@ -212,7 +212,8 @@
             </div>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit" style="margin-left: 153px;margin-bottom: 12px;" > Submit form</button>
+            <button class="btn btn-primary" type="submit" style="margin-left: 153px;margin-bottom: 12px;"> Submit
+                form</button>
         </div>
     </form>
 </div>

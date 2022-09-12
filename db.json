@@ -363,6 +363,24 @@
         "zipCode": ""
       },
       "id": 4
+    },
+    {
+      "firstName": "saurabh",
+      "lastName": "Kumbhar",
+      "mobileNumber": "9975975306",
+      "dateOfBirth": "",
+      "emailId": "saurabh@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "isFormAccept": true,
+      "address": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "zipCode": ""
+      },
+      "id": 5
     }
   ]
 }
